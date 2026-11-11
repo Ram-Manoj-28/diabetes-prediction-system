@@ -9,5 +9,5 @@ scikit-learn==1.4.2
 with open("/home/sagemaker-user/requirements.txt", "w") as f:
     f.write(requirements)
 
-print("requirements.txt created successfully")
-print(requirements)
+print("Updated requirements.txt:")
+print(open("/home/sagemaker-user/requirements.txt").read())
