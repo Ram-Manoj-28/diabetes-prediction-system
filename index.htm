@@ -1,0 +1,133 @@
+%%writefile templates/index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f7;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #173b67;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background: #1769aa;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 18px;
+            background: #e8f5e9;
+            text-align: center;
+            border-radius: 9px;
+        }
+
+        @media(max-width: 550px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <h1>Diabetes Prediction System</h1>
+    <p style="text-align:center">
+        Machine Learning Based Health Prediction
+    </p>
+
+    <form method="POST">
+        <div class="grid">
+
+            <div><label>Pregnancies</label>
+                <input type="number" name="pregnancies" min="0" step="any" required></div>
+
+            <div><label>Glucose</label>
+                <input type="number" name="glucose" min="0" step="any" required></div>
+
+            <div><label>Blood Pressure</label>
+                <input type="number" name="bloodpressure" min="0" step="any" required></div>
+
+            <div><label>Skin Thickness</label>
+                <input type="number" name="skinthickness" min="0" step="any" required></div>
+
+            <div><label>Insulin</label>
+                <input type="number" name="insulin" min="0" step="any" required></div>
+
+            <div><label>BMI</label>
+                <input type="number" name="bmi" min="0" step="any" required></div>
+
+            <div><label>Diabetes Pedigree Function</label>
+                <input type="number" name="diabetespedigreefunction" min="0" step="any" required></div>
+
+            <div><label>Age</label>
+                <input type="number" name="age" min="0" step="any" required></div>
+
+        </div>
+
+        <button type="submit">Predict Diabetes</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h2>{{ result }}</h2>
+        <h3>Predicted probability: {{ probability }}%</h3>
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <p style="color:red;text-align:center">{{ error }}</p>
+    {% endif %}
+
+    <p style="text-align:center;font-size:12px;color:gray">
+        Educational project only. Not a medical diagnosis.
+    </p>
+
+</div>
+</body>
+</html>
